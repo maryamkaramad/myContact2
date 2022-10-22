@@ -45,6 +45,7 @@ dispatch(updateContact(form))
 const c = contacts.filter(contact=> contact.id===Number(contactId))[0]
 if(c){
   setForm(c)
+  setState('update')
 }
   },[])
 
