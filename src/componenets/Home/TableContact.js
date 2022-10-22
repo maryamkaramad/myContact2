@@ -8,7 +8,7 @@ const TableContact = () => {
 
 
   return (
-    <Grid container display={"flex"} flexDirection={"column"}>
+    <Grid container display={"flex"} flexDirection={"column"} justifyContent={"space-around"}>
 {contacts.map(contact=><TableRow contact={contact}/> )}
     </Grid>
   )

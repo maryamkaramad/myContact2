@@ -15,11 +15,18 @@ export const ContactSlice = createSlice({
      const index=state.findIndex(state => state.id ===payload.id)
      state.splice(index,1)
     },
+    addContact: (state,action) => {
+      const{payload}=action
+      //payload==={id name number country}
+   
+      state.push(payload)
+      
+        },
  
   },
 })
 
 
-export const { deleteContact, decrement, incrementByAmount } = ContactSlice.actions
+export const { deleteContact, addContact } = ContactSlice.actions
 
 export default ContactSlice.reducer

@@ -9,7 +9,7 @@ const TableRow = ( {contact}) => {
 dispatch(deleteContact(id))
   }
   return (
-    <Grid display={'flex'} flexDirection={"row"} padding={2} alignItems={'center'}>
+    <Grid display={'flex'} flexDirection={"row"} padding={2} alignItems={'center'} justifyContent={"space-around"}>
     {rowTable.map(row=>(
 <Grid padding={2} key={row.id}>
 <Typography> {row.title.toUpperCase()}:{contact[row.title]}</Typography>
