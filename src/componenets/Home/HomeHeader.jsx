@@ -14,7 +14,9 @@ const HomeHeader = () => {
       </Typography>
       <Grid>
         <Link to={"/addcontact"}>
-          <Button varient="outlined">add contact</Button>
+          <Button variant="contained" color="success">
+            add contact
+          </Button>
         </Link>
       </Grid>
     </Grid>

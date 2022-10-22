@@ -4,23 +4,32 @@ import { Button } from '@mui/material';
 import { useState, useEffect } from 'react';
 import FormInput from '../data/form/FormInout';
 import { useDispatch } from 'react-redux';
-import {addContact} from '../redux/slice/contact.reducer'
+import {addContact, updateContact} from '../redux/slice/contact.reducer'
 import {useNavigate} from 'react-router-dom'
-import { Link } from 'react-router-dom';
+import { Link,useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const Form = () => {
+  const {contactId}=useParams()
+  const contacts = useSelector((state) => state.contacts)
   const dispatch=useDispatch();
 const navigate=useNavigate()
 const emptyInput={id:Math.floor(Math.random()*1000),name:"", number:"", country:""}
   const[form,setForm]=useState(emptyInput);
-  console.log(form)
+
   const handlechang=(e)=>{
     setForm({...form,[e.target.name]:e.target.value})
   }
+  const [state,setState]=useState('add')
   const handlesubmit=e=>{
     e.preventDefault();
-    dispatch(addContact(form))
-    clearInput()
- navigate('/')
+    if(state==='add'){  dispatch(addContact(form))
+     }
+else if(state==='update'){
+dispatch(updateContact(form))
+}
+     clearInput()
+     navigate('/')
+  
   }
   const clearInput=()=>{
     setForm(emptyInput);
@@ -31,6 +40,15 @@ const emptyInput={id:Math.floor(Math.random()*1000),name:"", number:"", country:
       clearInput()
   }
   },[]);
+
+  useEffect(()=>{
+const c = contacts.filter(contact=> contact.id===Number(contactId))[0]
+if(c){
+  setForm(c)
+}
+  },[])
+
+
   return (
     <Grid  display={"flex"} alignItems={"center"} justifyContent={"center"}>
     <Grid container display={"flex"} flexDirection={"column"} alignItems={"center"} >

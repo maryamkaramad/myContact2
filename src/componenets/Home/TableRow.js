@@ -3,6 +3,7 @@ import { Button, Grid, Typography } from "@mui/material";
 import rowTable from '../../data/home/rowTable'
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/slice/contact.reducer';
+import { Link} from 'react-router-dom';
 const TableRow = ( {contact}) => {
   const dispatch=useDispatch()
   const handledelete=id=>{
@@ -18,7 +19,9 @@ dispatch(deleteContact(id))
 <Button variant={'contained'}  color={'error'} onClick={()=>handledelete(contact.id)}>Delete</Button>
 </Grid>
 <Grid padding={2}>
-<Button variant={'contained'}>Info</Button>
+  <Link to={`/updatecontact/${contact.id}`}>
+  <Button variant={'contained'}>update</Button></Link>
+
 </Grid>
 <Grid padding={2}>
 <Button variant={'contained'} color={'warning'}>ChekTodo</Button>

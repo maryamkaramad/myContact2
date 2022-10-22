@@ -2,7 +2,6 @@ import React from 'react'
 import {Grid} from "@mui/material";
 import { useSelector} from 'react-redux'
 import TableRow from './TableRow';
-
 const TableContact = () => {
   const contacts = useSelector((state) => state.contacts)
 
