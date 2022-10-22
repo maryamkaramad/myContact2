@@ -6,6 +6,7 @@ import FormInput from '../data/form/FormInout';
 import { useDispatch } from 'react-redux';
 import {addContact} from '../redux/slice/contact.reducer'
 import {useNavigate} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 const Form = () => {
   const dispatch=useDispatch();
 const navigate=useNavigate()
@@ -33,8 +34,11 @@ const emptyInput={id:Math.floor(Math.random()*1000),name:"", number:"", country:
   return (
     <Grid  display={"flex"} alignItems={"center"} justifyContent={"center"}>
     <Grid container display={"flex"} flexDirection={"column"} alignItems={"center"} >
-        <Grid>
+        <Grid display={"flex"} gap={"100px"} justifyContent={"space-around"}>
         <Typography>FORM CONTACT</Typography>
+      <Link to={'/'}>
+        <Button variant="contained">back</Button>
+      </Link>
         </Grid >
         <Grid m={2}  >
 <form onSubmit={handlesubmit}>
