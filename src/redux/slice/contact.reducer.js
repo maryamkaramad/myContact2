@@ -1,9 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
+import data from './../../data/data';
 
-const initialState = [
-  {id:1,name:'maryam',number:'09162780255',country:"iran",todo:[{id:1,title:'buy ticket',status:false}]},
-  {id:2,name:'mohsen',number:'09176718827',country:"iran",todo:[{id:1,title:'buy milk',status:false}]}
-  ]
+const initialState = data
 
 export const ContactSlice = createSlice({
   name: 'contacts',
@@ -28,12 +26,18 @@ export const ContactSlice = createSlice({
        const index = state.findIndex(state=> state.id===payload.id)
          state[index]=payload
           
-            },
- 
+            },   
+            favoriteContact: (state,action) => {
+              const{payload}=action
+              //payload==={id name number country}
+           const index = state.findIndex(state=> state.id===payload.id)
+           state[index]= {...payload,Favorite : !payload.Favorite}
+              
+                },      
   },
 })
 
 
-export const { deleteContact, addContact ,updateContact} = ContactSlice.actions
+export const { deleteContact, addContact ,updateContact,favoriteContact} = ContactSlice.actions
 
 export default ContactSlice.reducer

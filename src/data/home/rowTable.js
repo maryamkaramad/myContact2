@@ -3,5 +3,6 @@ const rowTable=[
     {id:2,title:"name"},
     {id:3,title:"number"},
     {id:4,title:"country"},
+    
 ]
 export default rowTable

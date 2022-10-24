@@ -13,7 +13,7 @@ const Form = () => {
   const contacts = useSelector((state) => state.contacts)
   const dispatch=useDispatch();
 const navigate=useNavigate()
-const emptyInput={id:Math.floor(Math.random()*1000),name:"", number:"", country:""}
+const emptyInput={id:Math.floor(Math.random()*1000) ,img:'https://robohash.org/${id}',name:"", number:"", country:""}
   const[form,setForm]=useState(emptyInput);
 
   const handlechang=(e)=>{
@@ -51,23 +51,25 @@ if(c){
 
 
   return (
-    <Grid  display={"flex"} alignItems={"center"} justifyContent={"center"}>
-    <Grid container display={"flex"} flexDirection={"column"} alignItems={"center"} >
-        <Grid display={"flex"} gap={"100px"} justifyContent={"space-around"}>
+    <Grid container justifyContent={"center"}  alignItems={"center"}  my={20} >
+    <Grid container item xs={4}justifyContent={"center"}  alignItems={"center"}  flexDirection={"column"}>
+        <Grid  item m={"7px"}>
         <Typography>FORM CONTACT</Typography>
-      <Link to={'/'}>
-        <Button variant="contained">back</Button>
-      </Link>
+      
         </Grid >
-        <Grid m={2}  >
-<form onSubmit={handlesubmit}>
+        <Grid  display={"flex"} flexDirection={"column"} m={"7px"} Gap={"2px"}>
+<form onSubmit={handlesubmit} item >
   {FormInput.map(fi=>(
-    <TextField onChange={handlechang} key={fi.id}  label={fi.name} name={fi.name}  value={form[fi.name]}/>
+    <TextField item sx={{width:"90%" }}  onChange={handlechang} key={fi.id}  label={fi.name} name={fi.name}  value={form[fi.name]}/>
   ))}
-<Button type='submit' variant='contained' color={"success"}>
+<Button sx={{width:"45%"}}  type='submit' variant='contained' color={"success"}>
     submit
 </Button>
+<Link to={'/'}>
+        <Button sx={{width:"45%"}}   variant="contained">back</Button>
+      </Link>
 </form>
+
 </Grid>
         </Grid>
         </Grid>
