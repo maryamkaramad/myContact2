@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, TextField } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const InputSearch = ({ handlsearch }) => {
   return (
@@ -9,7 +10,7 @@ const InputSearch = ({ handlsearch }) => {
         id="search"
         label="Search ..."
         variant="outlined"
-        onChange={handlsearch}
+        onChange={(e) => handlsearch(e)}
       />
     </Grid>
   );

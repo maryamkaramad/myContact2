@@ -3,11 +3,11 @@ import { Button, Grid } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ContactsIcon from "@mui/icons-material/Contacts";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const FoveriteContact = () => {
   const contacts = useSelector((state) => state.contacts);
-  const [favorite, setfavorite] = useState([]);
+
   const handlecontact = () => {
     const data = contacts.filter((contact) => contact.Favorite === false);
     console.log(data);

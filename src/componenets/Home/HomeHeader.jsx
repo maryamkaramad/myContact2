@@ -5,7 +5,6 @@ import ContactPageIcon from "@mui/icons-material/ContactPage";
 import { useSelector } from "react-redux";
 const HomeHeader = () => {
   const contacts = useSelector((state) => state.contacts);
-
   return (
     <Grid
       container
