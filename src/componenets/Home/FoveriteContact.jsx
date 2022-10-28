@@ -2,20 +2,10 @@ import React from "react";
 import { Button, Grid } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ContactsIcon from "@mui/icons-material/Contacts";
-import { useSelector } from "react-redux";
+
 import { useEffect } from "react";
 
-const FoveriteContact = () => {
-  const contacts = useSelector((state) => state.contacts);
-
-  const handlecontact = () => {
-    const data = contacts.filter((contact) => contact.Favorite === false);
-    console.log(data);
-  };
-  const handlefavorite = () => {
-    const data = contacts.filter((contact) => contact.Favorite === true);
-    console.log(data);
-  };
+const FoveriteContact = ({ handlefavorite, handlecontact }) => {
   useEffect(() => {}, []);
   return (
     <Grid

@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 const Home = () => {
   const contacts = useSelector((state) => state.contacts)
   const [tempContacts, setTempContacts] = useState([]);
-  console.log('first', tempContacts)
+
   useEffect(() => {
     setTempContacts(contacts)
   }, [contacts])
@@ -22,11 +22,19 @@ const Home = () => {
     );
     setTempContacts(data)
   };
+  const handlecontact = () => {
+
+    setTempContacts(contacts)
+  };
+  const handlefavorite = () => {
+    const data = contacts.filter((contact) => contact.Favorite === true);
+    setTempContacts(data)
+  };
   return (
     <Grid>
       <Grid><HomeHeader /></Grid>
       <Grid><InputSearch handlsearch={handlsearch} /></Grid>
-      <Grid><FoveriteContact /></Grid>
+      <Grid><FoveriteContact handlecontact={handlecontact} handlefavorite={handlefavorite} /></Grid>
       <Grid><TableContact contacts={tempContacts} /></Grid>
     </Grid>
 
