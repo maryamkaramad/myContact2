@@ -21,6 +21,7 @@ export default function AlertDialog({ contact }) {
     };
     const handledelete = id => {
         dispatch(deleteContact(id))
+        setOpen(false);
     }
 
     return (
