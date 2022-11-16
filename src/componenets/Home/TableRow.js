@@ -15,26 +15,30 @@ const TableRow = ({ contact }) => {
     dispatch(favoriteContact(contact))
   }
   return (
-    <Grid display={'flex'} flexDirection={"row"} padding={2} alignItems={"center"} justifyContent={"space-around"} sx={{ boxShadow: " rgba(149, 157, 165, 0.2) 0px 8px 24px", textAlign: "left" }}>
-      <Grid border={"1px solid"} borderRadius={"100px"} ><Avatar alt="Remy Sharp" src={'https://robohash.org/' + contact.id} /></Grid>
+    <Grid sx={{ boxShadow: " rgba(149, 157, 165, 0.2) 0px 8px 24px", textAlign: "left", marginBottom: { xs: 1 } }} container xs={12} md={12} p={2} >
+      <Grid item xs={12} md={1} container justifyContent={"center"}>
+        <Grid item sx={2} border={"1px solid"} borderRadius={"100px"}><Avatar alt="Remy Sharp" src={'https://robohash.org/' + contact.id} /></Grid></Grid>
       {rowTable.map(row => (
-        <Grid padding={2} key={row.id}>
+        <Grid item key={row.id} container justifyContent={"center"} md={2}  >
           <Typography> {row.title.toUpperCase()}:{contact[row.title]}</Typography>
 
         </Grid>))}
-      <Typography onClick={handlefavorite} sx={{ cursor: "pointer" }}>{contact.Favorite === true ? <ThumbUpIcon /> : <ThumbUpOffAltIcon />}</Typography>
-      <Grid padding={2}>
-        <Button variant={'contained'} color={'error'} onClick={() => handledelete(contact.id)}>Delete</Button>
-      </Grid>
-      <Grid padding={2}>
-        <Link to={`/updatecontact/${contact.id}`} >
-          <Button variant={'contained'}>update</Button></Link>
+      <Grid item xs={12} md={1} container justifyContent={"center"}>  <Typography onClick={handlefavorite} sx={{ cursor: "pointer" }}>{contact.Favorite === true ? <ThumbUpIcon /> : <ThumbUpOffAltIcon />}</Typography></Grid>
+      <Grid item container xs={12} justifyContent={"center"} alignItems={"center"} flexDirection={"row"} gap={1}>
+        <Grid item  >
+          <Button variant={'contained'} color={'error'} onClick={() => handledelete(contact.id)}>Delete</Button>
+        </Grid>
+        <Grid item>
+          <Link to={`/updatecontact/${contact.id}`} >
+            <Button variant={'contained'}>update</Button></Link>
 
+        </Grid>
+        <Grid item >
+          <Link to={`/contacts/${contact.id}`} >
+            <Button variant={'contained'} color={'warning'}>info</Button></Link>
+        </Grid>
       </Grid>
-      <Grid padding={2}>
-        <Link to={`/contacts/${contact.id}`} >
-          <Button variant={'contained'} color={'warning'}>info</Button></Link>
-      </Grid>
+
     </Grid>
   )
 }
