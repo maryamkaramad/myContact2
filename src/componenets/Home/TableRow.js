@@ -2,15 +2,14 @@ import React from 'react'
 import { Button, Grid, Typography, Avatar } from "@mui/material";
 import rowTable from '../../data/home/rowTable'
 import { useDispatch } from 'react-redux';
-import { deleteContact, favoriteContact } from '../../redux/slice/contact.reducer';
+import { favoriteContact } from '../../redux/slice/contact.reducer';
 import { Link } from 'react-router-dom';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import AlertDialog from './AlertDialog';
 const TableRow = ({ contact }) => {
   const dispatch = useDispatch()
-  const handledelete = id => {
-    dispatch(deleteContact(id))
-  }
+
   const handlefavorite = () => {
     dispatch(favoriteContact(contact))
   }
@@ -26,7 +25,7 @@ const TableRow = ({ contact }) => {
       <Grid item xs={12} md={1} container justifyContent={"center"}>  <Typography onClick={handlefavorite} sx={{ cursor: "pointer" }}>{contact.Favorite === true ? <ThumbUpIcon /> : <ThumbUpOffAltIcon />}</Typography></Grid>
       <Grid item container xs={12} justifyContent={"center"} alignItems={"center"} flexDirection={"row"} gap={1}>
         <Grid item  >
-          <Button variant={'contained'} color={'error'} onClick={() => handledelete(contact.id)}>Delete</Button>
+          <AlertDialog contact={contact} />
         </Grid>
         <Grid item>
           <Link to={`/updatecontact/${contact.id}`} >
