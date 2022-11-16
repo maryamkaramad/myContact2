@@ -7,15 +7,17 @@ const HomeHeader = () => {
   const contacts = useSelector((state) => state.contacts);
   return (
     <Grid
+      flexDirection={"row"}
+      display={"flex"}
       container
       xs={12}
       justifyContent={"center"}
-      alignItems={"center"}
+      alignItems={"flex-end"}
       gap={2}
       md={12}
       sx={{ marginBottom: { xs: 2 } }}
     >
-      <Grid item continer xs={12} md={6} justifyContent={"flex-start"}
+      <Grid item continer xs={4} md={4} justifyContent={"flex-start"}
         alignItems={"center"}>
         <Grid item><Typography m={2} variant={"h6"} color={"GrayText"}></Typography></Grid>
         <Grid item> <ContactPageIcon sx={{ fontSize: 50 }} />
@@ -24,7 +26,7 @@ const HomeHeader = () => {
 
       </Grid>
 
-      <Grid item container xs={12} md={6} justifyContent={"flex-end"}
+      <Grid item container xs={4} md={4} justifyContent={"flex-end"}
         alignItems={"center"}>
         <Link to={"/addcontact"}>
           <Button variant="contained" color="success">
