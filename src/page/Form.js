@@ -53,29 +53,35 @@ const Form = () => {
 
 
   return (
-    <Grid container justifyContent={"center"} alignItems={"center"} my={20} >
-      <Grid container item xs={4} justifyContent={"center"} alignItems={"center"} flexDirection={"column"}>
-        <Grid item m={"7px"}>
+    <Grid container justifyContent={"center"} alignItems={"center"} sx={{ marginTop: 20 }}>
+      <Grid container item xs={4} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} >
+        <Grid item m={"7px"} container justifyContent={"center"} alignItems={"center"}>
           <Typography>FORM CONTACT</Typography>
 
-        </Grid >
-        <Grid display={"flex"} flexDirection={"column"} m={"7px"} Gap={"2px"}>
-          <form onSubmit={handlesubmit} item >
-            {FormInput.map(fi => (
-              <TextField item sx={{ width: "90%" }} onChange={handlechang} key={fi.id} label={fi.name} name={fi.name} value={form[fi.name]} />
-            ))}
 
-            <Button sx={{ width: "45%" }} type='submit' variant='contained' color={"success"}>
-              submit
-            </Button>
-            <Link to={'/'}>
-              <Button sx={{ width: "45%" }} variant="contained">back</Button>
-            </Link>
-          </form>
+          <Grid display={"flex"} flexDirection={"column"} m={"7px"} Gap={"2px"}>
+            <form onSubmit={handlesubmit}  >
 
+              {FormInput.map(fi => (
+                <TextField item sx={{ width: "90%" }} onChange={handlechang} key={fi.id} label={fi.name} name={fi.name} value={form[fi.name]} margin="dense" />
+              ))}
+
+              <Grid item container xs={11} display={"flex"} flexDirection={"column"} alignItems={"center"} gap={2} sx={{ marginTop: 2 }}>
+                <Button item type='submit' variant='contained' color={"success"} sx={{ width: "90%" }} >
+                  submit
+                </Button>
+                <Grid sx={{ width: "90%" }}>
+                  <Link to={'/'} >
+                    <Button item variant="contained" sx={{ width: "100%" }}>back</Button>
+                  </Link></Grid>
+              </Grid>
+            </form>
+
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
+
 
   )
 }
