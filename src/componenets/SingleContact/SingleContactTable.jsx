@@ -1,10 +1,16 @@
 import React from "react";
-import { Grid, Button } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import singleContactData from "./../../data/singleContact/singleContactData";
 import { Link } from "react-router-dom";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 const SingleContactTable = () => {
   const { contactId } = useParams();
   const contacts = useSelector((state) => state.contacts);
@@ -15,59 +21,42 @@ const SingleContactTable = () => {
   }, []);
 
   return (
-    <Grid
-      container
-      display={"flex"}
-      flexDirection={"column"}
-      justifyContent={"center"}
-      alignItems={"center"}
-    >
-      <Grid
-        container
-        item
-        display={"flex"}
-        flexDirection={"column"}
-        justifyContent={"space-around"}
-        alignItems={"center"}
-        alignContent={"center"}
-        mt={"200px"}
-        sx={{ boxShadow: " rgba(149, 157, 165, 0.2) 0px 8px 24px" }}
-        width={"400px"}
-        height={"400px"}
-      >
-        <Grid
-          item
-          border={"1px solid grey"}
-          borderRadius={"100px"}
-          width={"100px"}
-          height={"100px"}
-        >
-          <img
-            item
-            alt="Remy Sharp"
-            src={"https://robohash.org/" + contact.id}
-            width={"100%"}
-            height={"90%"}
-            align-self={"center"}
-          />
-        </Grid>
-        {singleContactData.map((s) => (
-          <Grid
-            item
-            key={s.id}
-            sx={{ boxShadow: "rgb(165 149 149 / 9%) 0px -5px 24px;" }}
-            width={"400px"}
-            display={"flex"}
-            justifyContent={"space-between"}
-          >
-            <Grid p={"20px"}>
-              {s.name}: {contact[s.name]}
+    <Grid container justifyContent={"center"} alignItems={"center"} sx={{ marginTop: "200px" }} xs={12} >
+      <Grid item justifyContent={"center"} alignItems={"center"} sx={{ width: 500 }}>
+        <Card sx={{ maxWidth: 500 }} >
+          <CardMedia
+            component="img"
+            alt="green iguana"
+            height="250"
+            image={"https://robohash.org/" + contact.id} />
+          <CardContent>
+            {singleContactData.map((s) => (
+              <Grid
+                item
+                key={s.id}
+              >
+                <Grid container gap={2} justifyContent={"flex-start"} textAlign={"left"} >
+                  <Typography >
+                    {s.name}:
+                  </Typography>
+                  <Typography >
+                    {contact[s.name]}
+                  </Typography>
+
+                </Grid>
+              </Grid>
+            ))}
+
+          </CardContent>
+          <CardActions>
+            <Grid sx={12} container justifyContent={"center"} alignItems={"center"}>
+              <Link to={"/"}>
+                <Button variant="contained">back</Button>
+              </Link>
             </Grid>
-          </Grid>
-        ))}
-        <Link to={"/"}>
-          <Button variant="contained">back</Button>
-        </Link>
+
+          </CardActions>
+        </Card>
       </Grid>
     </Grid>
   );

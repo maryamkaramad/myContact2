@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Grid, TextField } from '@mui/material';
+import { Grid, TextField } from '@mui/material';
 import { Button } from '@mui/material';
 import { useState, useEffect } from 'react';
 import FormInput from '../data/form/FormInout';
@@ -8,8 +8,9 @@ import { addContact, updateContact } from '../redux/slice/contact.reducer'
 import { useNavigate } from 'react-router-dom'
 import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import contactpng from "../assets/img/icons8-contacts-64.png"
 import 'animate.css';
+
 const Form = () => {
   const { contactId } = useParams()
   const contacts = useSelector((state) => state.contacts)
@@ -59,7 +60,9 @@ const Form = () => {
     <Grid container justifyContent={"center"} alignItems={"center"} sx={{ marginTop: 20 }}>
       <Grid container item xs={8} md={3} lg={3} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} >
         <Grid item container justifyContent={"center"} alignItems={"center"} flexDirection={"column"} >
-          <Grid item color={"blue"} ><AccountCircleIcon fontSize="large" /></Grid>
+          <Grid item  ><img src={contactpng} />
+
+          </Grid>
 
 
           <Grid display={"flex"} flexDirection={"column"} m={"7px"} Gap={"2px"}>

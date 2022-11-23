@@ -3,6 +3,7 @@ import { Button, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 import { useSelector } from "react-redux";
+
 const HomeHeader = () => {
   const contacts = useSelector((state) => state.contacts);
   return (
@@ -20,7 +21,7 @@ const HomeHeader = () => {
       <Grid item continer xs={4} md={4} justifyContent={"flex-start"}
         alignItems={"center"}>
         <Grid item><Typography m={2} variant={"h6"} color={"GrayText"}></Typography></Grid>
-        <Grid item> <ContactPageIcon sx={{ fontSize: 50 }} />
+        <Grid item > <ContactPageIcon sx={{ fontSize: 50, color: "green" }} />
           {contacts.length} contacts</Grid>
 
 

@@ -35,7 +35,7 @@ const Home = () => {
       <Grid><HomeHeader /></Grid>
       <Grid><InputSearch handlsearch={handlsearch} /></Grid>
       <Grid><FoveriteContact handlecontact={handlecontact} handlefavorite={handlefavorite} /></Grid>
-      <Grid><TableContact contacts={tempContacts} /></Grid>
+      <TableContact contacts={tempContacts} />
     </Grid>
 
   );

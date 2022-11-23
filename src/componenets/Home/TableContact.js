@@ -5,7 +5,7 @@ import TableRow from './TableRow';
 const TableContact = ({ contacts }) => {
 
   return (
-    <Grid container display={"flex"} flexDirection={"column"} justifyContent={"space-around"} alignContent={"stretch"}>
+    <Grid container xs={12} flexDirection={"row"} justifyContent={"center"} alignItems={"center"}>
       {contacts.map(contact =>
         <TableRow contact={contact} />)}
     </Grid>

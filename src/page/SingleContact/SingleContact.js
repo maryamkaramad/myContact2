@@ -4,9 +4,9 @@ import SingleContactTable from '../../componenets/SingleContact/SingleContactTab
 
 
 const SingleContact = () => {
-   
+
   return (
-    <Grid><SingleContactTable/></Grid>
+    <SingleContactTable />
   )
 }
 

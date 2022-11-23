@@ -2,11 +2,11 @@ import React from "react";
 import { Button, Grid } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ContactsIcon from "@mui/icons-material/Contacts";
-
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { useEffect } from "react";
 
 const FoveriteContact = ({ handlefavorite, handlecontact }) => {
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
   return (
     <Grid
       margin={2}
@@ -24,7 +24,7 @@ const FoveriteContact = ({ handlefavorite, handlecontact }) => {
       >
         <Grid item>
           <Button onClick={handlecontact}>
-            <ContactsIcon sx={{ cursor: "pointer" }} />
+            <AccountBoxIcon sx={{ cursor: "pointer" }} />
           </Button>
         </Grid>
         <Grid item>
