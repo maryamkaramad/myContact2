@@ -54,8 +54,8 @@ const Form = () => {
 
   return (
     <Grid container justifyContent={"center"} alignItems={"center"} sx={{ marginTop: 20 }}>
-      <Grid container item xs={4} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} >
-        <Grid item m={"7px"} container justifyContent={"center"} alignItems={"center"}>
+      <Grid container item xs={8} md={3} lg={3} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} >
+        <Grid item container justifyContent={"center"} alignItems={"center"} flexDirection={"column"} >
           <Typography>FORM CONTACT</Typography>
 
 
@@ -67,10 +67,10 @@ const Form = () => {
               ))}
 
               <Grid item container xs={11} display={"flex"} flexDirection={"column"} alignItems={"center"} gap={2} sx={{ marginTop: 2 }}>
-                <Button item type='submit' variant='contained' color={"success"} sx={{ width: "90%" }} >
+                <Button item type='submit' variant='contained' color={"success"} sx={{ width: "70%" }} >
                   submit
                 </Button>
-                <Grid sx={{ width: "90%" }}>
+                <Grid sx={{ width: "70%" }}>
                   <Link to={'/'} >
                     <Button item variant="contained" sx={{ width: "100%" }}>back</Button>
                   </Link></Grid>
