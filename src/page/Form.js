@@ -8,7 +8,8 @@ import { addContact, updateContact } from '../redux/slice/contact.reducer'
 import { useNavigate } from 'react-router-dom'
 import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import 'animate.css';
 const Form = () => {
   const { contactId } = useParams()
   const contacts = useSelector((state) => state.contacts)
@@ -16,7 +17,7 @@ const Form = () => {
   const navigate = useNavigate()
   const emptyInput = { id: Math.floor(Math.random() * 1000), img: 'https://robohash.org/${id}', name: "", number: "", country: "" }
   const [form, setForm] = useState(emptyInput);
-
+  const [disabled, setDisabled] = useState(false)
   const handlechang = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
@@ -51,12 +52,14 @@ const Form = () => {
     }
   }, [])
 
-
+  useEffect(() => {
+    setDisabled(form.name === '' || form.number === '' || form.country === '')
+  }, [form])
   return (
     <Grid container justifyContent={"center"} alignItems={"center"} sx={{ marginTop: 20 }}>
       <Grid container item xs={8} md={3} lg={3} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} >
         <Grid item container justifyContent={"center"} alignItems={"center"} flexDirection={"column"} >
-          <Typography>FORM CONTACT</Typography>
+          <Grid item color={"blue"} ><AccountCircleIcon fontSize="large" /></Grid>
 
 
           <Grid display={"flex"} flexDirection={"column"} m={"7px"} Gap={"2px"}>
@@ -66,8 +69,10 @@ const Form = () => {
                 <TextField item sx={{ width: "90%" }} onChange={handlechang} key={fi.id} label={fi.name} name={fi.name} value={form[fi.name]} margin="dense" />
               ))}
 
-              <Grid item container xs={11} display={"flex"} flexDirection={"column"} alignItems={"center"} gap={2} sx={{ marginTop: 2 }}>
-                <Button item type='submit' variant='contained' color={"success"} sx={{ width: "70%" }} >
+              <Grid item container xs={10} display={"flex"} flexDirection={"column"} alignItems={"center"} gap={2} sx={{ marginTop: 2 }}>
+                <Button className={disabled === true ? "animate__animated animate__shakeX" : ""} item type='submit' variant='contained' color={"success"} sx={{
+                  width: "70%",
+                }} disabled={disabled}  >
                   submit
                 </Button>
                 <Grid sx={{ width: "70%" }}>
